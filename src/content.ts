@@ -227,18 +227,18 @@ export const familyGroups: FamilyGroup[] = [
     namesEn: "Thakur Sa. Mansinghji Solanki, Smt. Sarita Solanki",
   },
   {
+    titleHi: "स्वागतातुर (भैय्या–भाभी)",
+    titleEn: "Eager to welcome you",
+    namesHi: "लवेन्द्रसिंहजी–सौ. अभिरुचि सोलंकी; सुरेन्द्रसिंहजी–सौ. वंदना सोलंकी",
+    namesEn: "Lavendrasinghji–Sau. Abhiruchi Solanki; Surendrasinghji–Sau. Vandana Solanki",
+  },
+  {
     titleHi: "दर्शनाभिलाषी",
     titleEn: "Seeking your blessings",
     namesHi:
       "ठा.सा. देवीसिंहजी–सौ. लक्ष्मीदेवी सोलंकी; श्रीमती कलावती चौहान; ठा.सा. राजेन्द्रसिंहजी–सौ. पुष्पादेवी राठौड़; ठा.सा. बहादुरसिंहजी–सौ. संगीता राठौड़; ठा.सा. सोहनसिंहजी–सौ. रेखा चौहान; ठा.सा. भरतसिंहजी–सौ. किरण सिसोदिया",
     namesEn:
       "Thakur Sa. Devisinghji–Sau. Laxmidevi Solanki; Smt. Kalawati Chauhan; Thakur Sa. Rajendrasinghji–Sau. Pushpadevi Rathore; Thakur Sa. Bahadursinghji–Sau. Sangeeta Rathore; Thakur Sa. Sohansinghji–Sau. Rekha Chauhan; Thakur Sa. Bharatsinghji–Sau. Kiran Sisodia",
-  },
-  {
-    titleHi: "स्वागतातुर (भैय्या–भाभी)",
-    titleEn: "Eager to welcome you",
-    namesHi: "लवेन्द्रसिंहजी–सौ. अभिरुचि सोलंकी; सुरेन्द्रसिंहजी–सौ. वंदना सोलंकी",
-    namesEn: "Lavendrasinghji–Sau. Abhiruchi Solanki; Surendrasinghji–Sau. Vandana Solanki",
   },
   {
     titleHi: "ननिहाल पक्ष",
