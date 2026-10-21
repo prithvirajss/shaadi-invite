@@ -47,7 +47,7 @@ export const opening = {
 // ---------- COUPLE SECTION ----------
 export const couple = {
   blessingLineHi:
-    "कुलदेवी माता खिमज एवं कुलदेवता की असीम कृपा से हमारे परिवार में शुभ प्रसंग आया है।",
+    "कुलदेवी माता खीमज एवं कुलदेवता की असीम कृपा से हमारे परिवार में शुभ प्रसंग आया है।",
   blessingLineEn:
     "By the boundless grace of Kuldevi Mata Khimaj and our Kuldevta, this auspicious occasion has come to our family.",
   groom: {
