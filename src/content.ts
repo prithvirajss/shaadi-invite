@@ -343,4 +343,8 @@ export const ui = {
   musicOnEn: "Play music",
   musicOffHi: "संगीत बंद करें",
   musicOffEn: "Mute music",
+  fullItineraryButtonHi: "पूरी कार्यक्रम सूची कैलेंडर में जोड़ें",
+  fullItineraryButtonEn: "Add Full Itinerary to Calendar",
+  fullItineraryHintHi: "हर कार्यक्रम से 30 मिनट पहले आपके कैलेंडर में याद दिलाया जाएगा",
+  fullItineraryHintEn: "Your calendar will remind you 30 minutes before each event",
 };

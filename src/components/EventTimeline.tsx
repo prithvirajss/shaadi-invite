@@ -1,7 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { events, timelineTitle, baratNote } from "@/content";
+import { events, timelineTitle, baratNote, ui } from "@/content";
+import { downloadFullItineraryIcs } from "@/lib/ics";
 import EventCard from "./EventCard";
 import GoldDivider from "./decor/GoldDivider";
 import type { EventKey } from "@/types";
@@ -12,12 +13,34 @@ export default function EventTimeline({ visibleKeys }: { visibleKeys: EventKey[]
 
   const filteredEvents = visibleKeys ? events.filter((e) => visibleKeys.includes(e.key)) : events;
 
+  const handleAddFullItinerary = () => {
+    downloadFullItineraryIcs(
+      filteredEvents.map((event) => ({
+        event,
+        nameHi: event.nameHi,
+        venueHi: event.venueHi,
+      }))
+    );
+  };
+
   return (
     <section className="px-6 py-14" id="timeline">
       <h2 className={`text-center text-2xl font-semibold gold-text ${isHi ? "font-hindi-heading" : "font-english"}`}>
         {isHi ? timelineTitle.hi : timelineTitle.en}
       </h2>
       <GoldDivider className="mx-auto mt-3 mb-8 h-5 w-32 text-[var(--color-gold)]" />
+
+      <div className="mx-auto mb-8 flex max-w-md flex-col items-center gap-1.5">
+        <button
+          onClick={handleAddFullItinerary}
+          className="rounded-full bg-[var(--color-maroon)] px-5 py-3 text-sm font-semibold text-[var(--color-ivory)] shadow-md transition active:scale-95"
+        >
+          📅 {isHi ? ui.fullItineraryButtonHi : ui.fullItineraryButtonEn}
+        </button>
+        <p className={`text-center text-xs maroon-text/50 ${isHi ? "font-hindi-body" : "font-english"}`}>
+          {isHi ? ui.fullItineraryHintHi : ui.fullItineraryHintEn}
+        </p>
+      </div>
 
       <div className="mx-auto flex max-w-md flex-col gap-4">
         {filteredEvents.map((event) => (
