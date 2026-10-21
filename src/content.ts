@@ -14,9 +14,8 @@ export const config = {
   whatsappShareNumber: "918889965231", // country code + number, no "+" or spaces
   weddingHashtag: "#PrithvirajSangPalak",
   shubhLagnaIso: "2026-11-21T13:00:00+05:30", // used for the live countdown
-  // TODO: fill in exact Mata Pujan time
-  mataPujanTimeHi: "समय शीघ्र सूचित किया जाएगा",
-  mataPujanTimeEn: "Time to be announced",
+  mataPujanTimeHi: "प्रातः 9:30 बजे",
+  mataPujanTimeEn: "9:30 AM",
   siteUrl: "https://prithvirajss.github.io/shaadi-invite", // GitHub Pages project site
 };
 
@@ -104,8 +103,8 @@ export const events: WeddingEvent[] = [
     timeEn: config.mataPujanTimeEn,
     venueHi: "निज निवास, 384, शरद माधव विहार, ड्रीम वर्ल्ड रिसोर्ट के पास, गोमटगिरी, नैनोद, इन्दौर",
     venueEn: "Residence, 384, Sharad Madhav Vihar, near Dream World Resort, Gomatgiri, Nainod, Indore",
-    startIso: "2026-11-19T09:00:00+05:30",
-    endIso: "2026-11-19T11:00:00+05:30",
+    startIso: "2026-11-19T09:30:00+05:30",
+    endIso: "2026-11-19T11:30:00+05:30",
     mapUrl: INDORE_VENUE_MAP_URL,
   },
   {
