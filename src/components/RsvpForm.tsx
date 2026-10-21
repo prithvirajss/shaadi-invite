@@ -22,7 +22,6 @@ export default function RsvpForm({
 
   const [name, setName] = useState(defaultName ?? "");
   const [phone, setPhone] = useState("");
-  const [guestCount, setGuestCount] = useState(1);
   const [selectedEvents, setSelectedEvents] = useState<EventKey[]>(
     availableEvents.map((e) => e.key)
   );
@@ -71,7 +70,7 @@ export default function RsvpForm({
     const { error: insertError } = await supabase.rpc("submit_rsvp", {
       p_name: name.trim(),
       p_phone: phone.trim(),
-      p_guest_count: guestCount,
+      p_guest_count: 1,
       p_events: selectedEvents,
     });
     setSubmitting(false);
@@ -133,20 +132,6 @@ export default function RsvpForm({
             onChange={(e) => setPhone(e.target.value)}
             className="w-full rounded-lg border border-[var(--color-gold)]/50 bg-white px-3 py-2.5 text-base maroon-text focus:border-[var(--color-maroon)] focus:outline-none"
             maxLength={15}
-          />
-        </div>
-
-        <div>
-          <label className="mb-1 block text-sm font-medium maroon-text">
-            {isHi ? rsvp.guestCountLabelHi : rsvp.guestCountLabelEn}
-          </label>
-          <input
-            type="number"
-            min={1}
-            max={20}
-            value={guestCount}
-            onChange={(e) => setGuestCount(Math.max(1, Math.min(20, Number(e.target.value) || 1)))}
-            className="w-full rounded-lg border border-[var(--color-gold)]/50 bg-white px-3 py-2.5 text-base maroon-text focus:border-[var(--color-maroon)] focus:outline-none"
           />
         </div>
 
