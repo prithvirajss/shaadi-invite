@@ -21,11 +21,14 @@ create index if not exists rsvps_phone_idx on public.rsvps (phone);
 
 alter table public.rsvps enable row level security;
 
--- Anyone (anon key) can insert an RSVP.
+-- Anyone (public anon/publishable key) can insert an RSVP.
+-- Scoped "to public" rather than "to anon": kept in case PostgREST's
+-- auto-generated insert route (see the note on submit_rsvp below) ever
+-- starts honoring the anon role correctly on this project again.
 drop policy if exists "Allow public insert on rsvps" on public.rsvps;
 create policy "Allow public insert on rsvps"
   on public.rsvps for insert
-  to anon
+  to public
   with check (true);
 
 -- No public select/update/delete. Admin reads happen via the service role key
@@ -47,19 +50,74 @@ create index if not exists blessings_approved_idx on public.blessings (approved)
 
 alter table public.blessings enable row level security;
 
--- Anyone can insert a blessing (starts unapproved).
+-- Anyone can insert a blessing (starts unapproved). "to public" — see note
+-- on the rsvps insert policy above.
 drop policy if exists "Allow public insert on blessings" on public.blessings;
 create policy "Allow public insert on blessings"
   on public.blessings for insert
-  to anon
+  to public
   with check (approved = false);
 
 -- Anyone can read ONLY approved blessings (for the public blessings wall).
+-- This direct SELECT route works fine via the anon key (confirmed) — it's
+-- only the direct INSERT route that's broken (see below), so reads stay
+-- as plain `supabase.from(...).select(...)` in the app code.
 drop policy if exists "Allow public select of approved blessings" on public.blessings;
 create policy "Allow public select of approved blessings"
   on public.blessings for select
-  to anon
+  to public
   using (approved = true);
 
 -- Updates (approve) and deletes happen only via the service role key (admin),
 -- which bypasses RLS — no public policy is defined for update/delete.
+
+-- ============================================================
+-- Insert RPC functions — workaround for a platform-side issue
+-- ============================================================
+-- On this project, PostgREST's auto-generated POST /rsvps and
+-- POST /blessings routes (i.e. `supabase.from(...).insert(...)` from the
+-- browser) reject every anon-key insert with a false "row violates row
+-- level security policy" error — confirmed NOT an actual RLS/policy/grant
+-- problem: `SET ROLE anon; INSERT ...;` succeeds directly in SQL, the
+-- anon role and policies above are correct, and reads (SELECT) via the
+-- anon key work fine. Calling an RPC function that performs the same
+-- INSERT, however, works correctly. Root cause is unconfirmed (something
+-- specific to this project's generated table-CRUD route), but the RPC
+-- path is a legitimate, equally-secure Supabase pattern (SECURITY
+-- INVOKER, so it still runs as the calling anon role and is still
+-- governed by the RLS policies above) — so the app calls these instead
+-- of inserting directly. If the direct-insert route ever starts working
+-- again, these can be removed and the app code reverted.
+
+create or replace function public.submit_rsvp(
+  p_name text,
+  p_phone text,
+  p_guest_count integer,
+  p_events text[]
+)
+returns void
+language plpgsql
+security invoker
+as $$
+begin
+  insert into public.rsvps (name, phone, guest_count, events)
+  values (p_name, p_phone, p_guest_count, p_events);
+end;
+$$;
+
+create or replace function public.submit_blessing(
+  p_name text,
+  p_message text
+)
+returns void
+language plpgsql
+security invoker
+as $$
+begin
+  insert into public.blessings (name, message, approved)
+  values (p_name, p_message, false);
+end;
+$$;
+
+grant execute on function public.submit_rsvp(text, text, integer, text[]) to anon, authenticated;
+grant execute on function public.submit_blessing(text, text) to anon, authenticated;

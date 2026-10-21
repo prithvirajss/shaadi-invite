@@ -65,11 +65,14 @@ export default function RsvpForm({
     }
 
     setSubmitting(true);
-    const { error: insertError } = await supabase.from("rsvps").insert({
-      name: name.trim(),
-      phone: phone.trim(),
-      guest_count: guestCount,
-      events: selectedEvents,
+    // Routed through an RPC function rather than a direct table insert —
+    // see supabase/schema.sql for why (PostgREST's auto-generated
+    // insert route was unreliable for this project; the RPC path isn't).
+    const { error: insertError } = await supabase.rpc("submit_rsvp", {
+      p_name: name.trim(),
+      p_phone: phone.trim(),
+      p_guest_count: guestCount,
+      p_events: selectedEvents,
     });
     setSubmitting(false);
 

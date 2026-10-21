@@ -46,3 +46,4 @@ generated-links.csv
 # local secrets
 token
 *.token
+Supabasedetails

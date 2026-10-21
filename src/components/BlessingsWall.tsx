@@ -65,10 +65,12 @@ export default function BlessingsWall() {
     }
 
     setSubmitting(true);
-    const { error: insertError } = await supabase.from("blessings").insert({
-      name: name.trim().slice(0, 100),
-      message: message.trim().slice(0, copy.maxChars),
-      approved: false,
+    // Routed through an RPC function rather than a direct table insert —
+    // see supabase/schema.sql for why (PostgREST's auto-generated
+    // insert route was unreliable for this project; the RPC path isn't).
+    const { error: insertError } = await supabase.rpc("submit_blessing", {
+      p_name: name.trim().slice(0, 100),
+      p_message: message.trim().slice(0, copy.maxChars),
     });
     setSubmitting(false);
 
