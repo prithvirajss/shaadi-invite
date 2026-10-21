@@ -82,12 +82,12 @@ export const timelineTitle = {
 
 export const baratNote = {
   hi: "बारात श्रीमान ठा.सा. विजयसिंहजी राठौड़ (देवास) वालों के यहाँ शनिवार, 21 नवम्बर 2026 को सुबह 10 बजे रॉयल पैलेस रिसोर्ट (देवास) जावेगी।",
-  en: "The groom's procession (Baraat) will arrive at the residence of Shri Thakur Sa. Vijay Singhji Rathore (Devas) — Royal Palace Resort, Devas — at 10:00 AM on Saturday, 21 November 2026.",
+  en: "The groom's procession (Baraat) will arrive at the residence of Shri Thakur Sa. Vijay Singhji Rathore (Dewas) — Royal Palace Resort, Dewas — at 10:00 AM on Saturday, 21 November 2026.",
 };
 
 // Replace the placeholder lat/lng in each mapUrl with the real venue coordinates.
 const DEVAS_VENUE_MAP_URL =
-  "https://www.google.com/maps/search/?api=1&query=22.9917628,76.0145183"; // The Royal Palace, Devas
+  "https://www.google.com/maps/search/?api=1&query=22.9917628,76.0145183"; // The Royal Palace, Dewas
 const INDORE_VENUE_MAP_URL =
   "https://www.google.com/maps/search/?api=1&query=22.736381,75.774671"; // 384, Sharad Madhav Vihar, Gomatgiri, Nainod, Indore
 
@@ -117,7 +117,7 @@ export const events: WeddingEvent[] = [
     timeHi: "प्रातः 10 बजे",
     timeEn: "10:00 AM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     startIso: "2026-11-20T10:00:00+05:30",
     endIso: "2026-11-20T11:30:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
@@ -132,7 +132,7 @@ export const events: WeddingEvent[] = [
     timeHi: "दोपहर 12 बजे",
     timeEn: "12:00 PM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     noteHi: "मामेरा प्रथा बंद है।",
     noteEn: "Note: the Mamera ceremony will not be held.",
     startIso: "2026-11-20T12:00:00+05:30",
@@ -149,7 +149,7 @@ export const events: WeddingEvent[] = [
     timeHi: "दोपहर 1 बजे",
     timeEn: "1:00 PM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     startIso: "2026-11-20T13:00:00+05:30",
     endIso: "2026-11-20T15:00:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
@@ -164,7 +164,7 @@ export const events: WeddingEvent[] = [
     timeHi: "शाम 7:30 बजे",
     timeEn: "7:30 PM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     startIso: "2026-11-20T19:30:00+05:30",
     endIso: "2026-11-20T22:00:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
@@ -179,7 +179,7 @@ export const events: WeddingEvent[] = [
     timeHi: "प्रातः 10 बजे",
     timeEn: "10:00 AM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     startIso: "2026-11-21T10:00:00+05:30",
     endIso: "2026-11-21T12:00:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
@@ -194,7 +194,7 @@ export const events: WeddingEvent[] = [
     timeHi: "दोपहर 1 बजे",
     timeEn: "1:00 PM",
     venueHi: "रॉयल पैलेस रिसोर्ट, देवास",
-    venueEn: "Royal Palace Resort, Devas",
+    venueEn: "Royal Palace Resort, Dewas",
     startIso: "2026-11-21T13:00:00+05:30",
     endIso: "2026-11-21T15:00:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
@@ -209,7 +209,7 @@ export const events: WeddingEvent[] = [
     timeHi: "शाम 8 बजे से आपके आगमन तक",
     timeEn: "8:00 PM onwards, at your convenience",
     venueHi: "रॉयल पैलेस रिसोर्ट, उज्जैन रोड (बायपास), देवास (म.प्र.)",
-    venueEn: "Royal Palace Resort, Ujjain Road (Bypass), Devas (M.P.)",
+    venueEn: "Royal Palace Resort, Ujjain Road (Bypass), Dewas (M.P.)",
     startIso: "2026-11-21T20:00:00+05:30",
     endIso: "2026-11-21T23:30:00+05:30",
     mapUrl: DEVAS_VENUE_MAP_URL,
